@@ -192,44 +192,48 @@ class App extends Component {
 
   render() {
     return (
-      <div className="container-fetch" >        
-        <div>  
-          <div ref="firstAuth" className = {(this.state.success1)? 'hideElement':'showElement'}>             
+      <div className="container-auth" >        
+          
+          <div ref="firstAuth" className = {(this.state.success1)? 'hideElement':'showElement firstAuth'}>             
             <p>First password</p>
-            <input ref="password1" name="password1" type="text"/>            
-            <button onClick={this.firstAuthentication}>First verification</button>            
+            <input ref="password1" name="password1" type="password"/>            
+            <button onClick={this.firstAuthentication}>First verification</button> 
+            <p>{this.message1}</p>            
           </div>  
           
-          <div ref="secondAuth" className = {(this.state.success1)? 'showElement' : 'hideElement'}>
+          <div ref="secondAuth" className = {(this.state.success1)? 'showElement secondAuth' : 'hideElement'}>
             <p>{this.message1}</p> 
-            <input ref="token1" name="token1" type="text"/>
+            <textarea ref="token1" name="token1" type="text"/>
             <p>Second password</p>
-            <input ref="password2" name="password2" type="text"/>
+            <input ref="password2" name="password2" type="password"/>
             <button onClick={this.secondAuthentication}>Second verification</button>
+            <p>{this.message2}</p>
           </div>
 
-          <div ref="thirdAuth" className = {(this.state.success1 && this.state.success2)? 'showElement' : 'hideElement'}> 
+          <div ref="thirdAuth" className = {(this.state.success1 && this.state.success2)? 'showElement thirdAuth' : 'hideElement'}> 
             <p>{this.message2}</p> 
-            <input ref="token2" name="token2" type="text"/>
+            <textarea ref="token2" name="token2" type="text"/>
             <p>Third password</p>
-            <input ref="password3" name="password3" type="text"/>
+            <input ref="password3" name="password3" type="password"/>
             <button onClick={this.thirdAuthentication}>Third verification</button>
+            <p>{this.message3}</p> 
           </div>
             
-          <div ref="fourthAuth" className = {(this.state.success1 && this.state.success2 && this.state.success3)? 'showElement' : 'hideElement'}>
+          <div ref="fourthAuth" className = {(this.state.success1 && this.state.success2 && this.state.success3)? 'showElement fourthAuth' : 'hideElement'}>
             <p>{this.message3}</p>             
-            <input ref="token3" name="token3" type="text"/>
+            <textarea ref="token3" name="token3" type="text"/>
             <p>Fourth password</p>
-            <input ref="password4" name="password4" type="text"/>
-            <button onClick={this.fourthAuthentication}>Fourth verification</button>            
+            <input ref="password4" name="password4" type="password"/>
+            <button onClick={this.fourthAuthentication}>Fourth verification</button>  
+            <p>{this.message4}</p>           
           </div> 
 
-          <div ref="secretData" className = {(this.state.success1 && this.state.success2 && this.state.success3 && this.state.success4)? 'showElement' : 'hideElement'}>
+          <div ref="secretData" className = {(this.state.success1 && this.state.success2 && this.state.success3 && this.state.success4)? 'showElement secretData' : 'hideElement'}>
             <p>{this.message4}</p>
-            <p style={{width:'300px'}}>{this.superSecretData}</p>
+            <p>{this.superSecretData}</p>
           </div> 
             
-        </div>
+        
       </div> 
     );
   }
