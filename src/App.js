@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import ProgressBar from './progressbar/progressbar';
 
 class App extends Component {
 
@@ -14,6 +15,7 @@ class App extends Component {
     this.message3="";
     this.message4="";
     this.superSecretData="";
+    this.progress=0;
     this.state = {success1:false, success2:false, success3:false, success4:false}
   }
 
@@ -45,6 +47,7 @@ class App extends Component {
         this.refs.token1.value = data.token;
         this.message1 = data.message;
         this.secondRoute = data.secondRoute;
+        this.progress=25;
         this.setState({success1:true});        
       }
       else {
@@ -89,6 +92,7 @@ class App extends Component {
         this.message2 = data.message;
         this.thirdRoute = data.thirdRoute;
         this.refs.secondAuth.className = 'hideElement';
+        this.progress=50;
         this.setState({success2:true});        
       }
       else {
@@ -132,6 +136,7 @@ class App extends Component {
         this.message3 = data.message;
         this.fourthRoute = data.fourthRoute;
         this.refs.thirdAuth.className = 'hideElement';
+        this.progress=75;
         this.setState({success3:true});        
       }
       else {
@@ -173,6 +178,7 @@ class App extends Component {
       if(data.success) {       
         this.superSecretData = data.superSecretData;
         this.message4 = data.message;
+        this.progress=100;
         this.refs.fourthAuth.className = 'hideElement';
         this.setState({success4:true});        
       }
@@ -191,8 +197,10 @@ class App extends Component {
   }
 
   render() {
+    console.log(this.progress)
     return (
-      <div className="container-auth" >        
+      <div className="container-auth" >      
+          <ProgressBar progress={this.progress}/>  
           
           <div ref="firstAuth" className = {(this.state.success1)? 'hideElement':'showElement firstAuth'}>             
             <p>First password</p>
