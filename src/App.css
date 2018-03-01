@@ -1,13 +1,16 @@
 
-h1 {
-	text-align:center;
-}
 
-input[type="text"], input[type="password"] {
+.auth-steps input[type="password"] {
 	padding:0.5em;
 	border-radius:3px;
 	border:1px solid rgb(189, 189, 189);
 	outline:none;
+}
+.auth-steps input[type="password"]:focus {
+	padding:0.5em;
+	border-radius:3px;
+	border:1px solid rgb(189, 189, 189);
+	outline:1px solid #3E5381;
 }
 
 .hideElement {
@@ -18,7 +21,8 @@ input[type="text"], input[type="password"] {
   display:block;
 }
 
-.container-auth button {
+.auth-steps button {
+  box-shadow: 0 4px 2px -2px rgba(0,0,0,0.5);
 	padding:1em 2em;
 	border-radius:3px;
   background-color:#ff7403;	
@@ -28,9 +32,30 @@ input[type="text"], input[type="password"] {
 	transition:all 0.1s linear;
 	outline:none;
   cursor:pointer;
-  float:right;
+  
 }
 
+.auth-steps p > span {
+  font-size:0.8em;
+  color:red;
+  
+}
+
+.auth-button-flex {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.container-auth h1 {
+  margin: 0;
+    padding: 0;
+    font-size: 2.2em;
+    text-transform: uppercase;
+    text-align: center;
+    letter-spacing: 2px;
+    font-weight: 400;
+}
 
 .container-auth button:hover {  
   background-color:#b85300;
@@ -41,11 +66,14 @@ input[type="text"], input[type="password"] {
   color:#101010;
   width:80%;
   margin:0 auto;
+  position:relative;
+  padding-top:1em;
+  box-shadow:0 0 10px rgba(0,0,0,0.8);
   
 }
 .container-auth textarea {
   width:100%;
-  height:100px;
+  height:80px;
   border-radius:3px;
 	border:1px solid rgb(189, 189, 189);
   outline:none;
@@ -54,8 +82,8 @@ input[type="text"], input[type="password"] {
 
 .auth-steps {  
   padding-bottom:2em;
-  width:40%;
-  
+  width:60%;
+  position:relative;
   margin:0 auto;
 }
 .auth-steps-message {

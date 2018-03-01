@@ -199,17 +199,20 @@ class App extends Component {
   render() {
     console.log(this.progress)
     return (
-      <div className="container-auth" >      
+      <div className="container-auth" >   
+      <h1>4-Step Token Verification</h1>   
           <ProgressBar progress={this.progress}/>  
           
           <div ref="firstAuth" className = {(this.state.success1)? 'hideElement':'showElement auth-steps'}>             
-            <p className = "auth-steps-explanation">Four passwords are required for this four step token verification. 
+            <p className = "auth-steps-explanation">Four passwords are required for this 4-step token verification. 
               The first password will be checked by a Node.js API that will return a jsonwebtoken required for the second 
               step of the verification. This token will be issued by the first fiduciary entity at the bottom of the scale 
               of trust called Captain America and will be available for 2 minutes only.</p>
-            <p>First password</p>
-            <input ref="password1" name="password1" type="password"/>            
+            <p>First password <span>Password: secret</span></p>
+            <div className = "auth-button-flex">
+            <input ref="password1" name="password1" type="password"/>          
             <button onClick={this.firstAuthentication}>First verification</button> 
+            </div>
             <p className = "auth-steps-message">{this.message1}</p>            
           </div>  
           
@@ -225,45 +228,71 @@ class App extends Component {
   role:	['Captain'];
 }`}
             </code></pre>
-            <p className = "auth-steps-explanation">Captain America. The second password is now needed to access
+            <p className = "auth-steps-explanation">The second password is now needed to access
               the third stage of the verification. Upon submitting the credentials the token will be verified in 
               another Node.js API by Captain America and if both the token and the password are valid, a new entity 
               called General Shang will provide a second token with 2 minutes expiration time required in the third verification.
             </p>
             <p>First token</p>
             <textarea ref="token1" name="token1" type="text"/>
-            <p>Second password</p>
+            <p>Second password <span>Password: hidden</span></p>
+            <div className = "auth-button-flex">
             <input ref="password2" name="password2" type="password"/>
             <button onClick={this.secondAuthentication}>Second verification</button>
+            </div>
             <p className = "auth-steps-message">{this.message2}</p>
           </div>
 
           <div ref="thirdAuth" className = {(this.state.success1 && this.state.success2)? 'showElement auth-steps' : 'hideElement'}> 
             <p className = "auth-steps-message">{this.message2}</p> 
-            <p className = "auth-steps-explanation">General Shang has provided the second token. By sending the second token and the third password 
+            <p className = "auth-steps-explanation">The second token has been provided by the second fiduciary entity:</p>
+            <pre><code>
+{`signInEntityGeneral : {
+  name:'General Shang', 
+  organization:'Mulan', 
+  website:'disney.com',
+  contactEmail:'generalshang@gmail.com',
+  role:['Captain','General']
+}`}
+            </code></pre>
+            <p className = "auth-steps-explanation">By sending the second token and the third password 
               to a third Node.js API which will verify the validity of the General's token, a third entity, the 
               Commander in chief President of the USA, will emit a third token for the fourth and final verification.
             </p>
             <p>Second token</p>
             <textarea ref="token2" name="token2" type="text"/>
-            <p>Third password</p>
+            <p>Third password <span>Password: concealed</span></p>
+            <div className = "auth-button-flex">
             <input ref="password3" name="password3" type="password"/>
             <button onClick={this.thirdAuthentication}>Third verification</button>
+            </div>
             <p className = "auth-steps-message">{this.message3}</p> 
           </div>
             
           <div ref="fourthAuth" className = {(this.state.success1 && this.state.success2 && this.state.success3)? 'showElement auth-steps' : 'hideElement'}>
             <p className = "auth-steps-message">{this.message3}</p> 
-            <p className = "auth-steps-explanation">The token was verified by General Shang. The third password was correct. Commander in chief President of 
-            the USA has issued a third and final token for the fourth verification. By submitting the credentials, 
-            the Commander in chief will check the third token and if it is valid and the password coincides, access to the 
-            secret data will be granted.
+            <p className = "auth-steps-explanation">The second token has been provided by the second fiduciary entity:</p>
+            <pre><code>
+{`signInEntityCommander : {
+  name:'The President of the United States', 
+  organization:'USA', 
+  website:'usa.com',
+  contactEmail:'abrahamlincoln@gmail.com',
+  role:['Captain','General','Commander in Chief']
+}`}
+            </code></pre>
+            <p className = "auth-steps-explanation">The token was verified by General Shang and the third password was correct. 
+            Commander in chief President of the USA has issued a third and final token for the fourth verification. 
+            By submitting the credentials, the Commander in chief will check the third token and if it is valid and 
+            the password coincides, access to the secret data will be granted.
             </p>             
             <p>Third token</p>           
             <textarea ref="token3" name="token3" type="text"/>
-            <p>Fourth password</p>
+            <p>Fourth password <span>Password: inaccessible</span></p>
+            <div className = "auth-button-flex">
             <input ref="password4" name="password4" type="password"/>
             <button onClick={this.fourthAuthentication}>Fourth verification</button>  
+            </div>
             <p className = "auth-steps-message">{this.message4}</p>           
           </div> 
 
