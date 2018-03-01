@@ -21,8 +21,8 @@ input[type="text"], input[type="password"] {
 .container-auth button {
 	padding:1em 2em;
 	border-radius:3px;
-	background-color:transparent;
-	border:1px solid white;
+  background-color:#ff7403;	
+  border:none;
 	color:white;
 	margin-left:1em;
 	transition:all 0.1s linear;
@@ -33,14 +33,14 @@ input[type="text"], input[type="password"] {
 
 
 .container-auth button:hover {  
-  background-color:white;
+  background-color:#b85300;
 }
 
-
 .container-auth {
-  color:#fff;
-  
-  width:100%;
+  background-color:#fff;
+  color:#101010;
+  width:80%;
+  margin:0 auto;
   
 }
 .container-auth textarea {
@@ -52,12 +52,21 @@ input[type="text"], input[type="password"] {
   resize: none;
 }
 
-.firstAuth, .secondAuth, .thirdAuth, .fourthAuth, .secretData {
-  box-shadow:0 0 10px black;
-  padding:2em;
+.auth-steps {  
+  padding-bottom:2em;
   width:40%;
-  text-align:initial;
+  
   margin:0 auto;
+}
+.auth-steps-message {
+  letter-spacing: 0.1em;
+    text-align: center;
+    font-weight: bold;
+}
+
+.auth-steps-explanation {
+  font-size:0.9em;
+  color:#5e5e5e;
 }
 
 .firstAuth {
