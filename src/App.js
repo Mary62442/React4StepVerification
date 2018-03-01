@@ -199,6 +199,7 @@ class App extends Component {
   render() {
     console.log(this.progress)
     return (
+      <div className = "auth-main-container">
       <div className="container-auth" >   
       <h1>4-Step Token Verification</h1>   
           <ProgressBar progress={this.progress}/>  
@@ -208,7 +209,7 @@ class App extends Component {
               The first password will be checked by a Node.js API that will return a jsonwebtoken required for the second 
               step of the verification. This token will be issued by the first fiduciary entity at the bottom of the scale 
               of trust called Captain America and will be available for 2 minutes only.</p>
-            <p>First password <span>Password: secret</span></p>
+            <p>First password: <span>'secret'</span></p>
             <div className = "auth-button-flex">
             <input ref="password1" name="password1" type="password"/>          
             <button onClick={this.firstAuthentication}>First verification</button> 
@@ -235,7 +236,7 @@ class App extends Component {
             </p>
             <p>First token</p>
             <textarea ref="token1" name="token1" type="text"/>
-            <p>Second password <span>Password: hidden</span></p>
+            <p>Second password: <span>'hidden'</span></p>
             <div className = "auth-button-flex">
             <input ref="password2" name="password2" type="password"/>
             <button onClick={this.secondAuthentication}>Second verification</button>
@@ -261,7 +262,7 @@ class App extends Component {
             </p>
             <p>Second token</p>
             <textarea ref="token2" name="token2" type="text"/>
-            <p>Third password <span>Password: concealed</span></p>
+            <p>Third password: <span>'concealed'</span></p>
             <div className = "auth-button-flex">
             <input ref="password3" name="password3" type="password"/>
             <button onClick={this.thirdAuthentication}>Third verification</button>
@@ -288,7 +289,7 @@ class App extends Component {
             </p>             
             <p>Third token</p>           
             <textarea ref="token3" name="token3" type="text"/>
-            <p>Fourth password <span>Password: inaccessible</span></p>
+            <p>Fourth password: <span>'inaccessible'</span></p>
             <div className = "auth-button-flex">
             <input ref="password4" name="password4" type="password"/>
             <button onClick={this.fourthAuthentication}>Fourth verification</button>  
@@ -305,7 +306,7 @@ class App extends Component {
             <p>{this.superSecretData}</p>
           </div> 
             
-        
+          </div>
       </div> 
     );
   }

@@ -21,6 +21,10 @@
   display:block;
 }
 
+.auth-main-container {
+  padding:3em 0;
+}
+
 .auth-steps button {
   box-shadow: 0 4px 2px -2px rgba(0,0,0,0.5);
 	padding:1em 2em;
