@@ -47,7 +47,7 @@ class App extends Component {
         this.refs.token1.value = data.token;
         this.message1 = data.message;
         this.secondRoute = data.secondRoute;
-        this.progress=25;
+        this.progress=33.33333;
         this.setState({success1:true});        
       }
       else {
@@ -92,7 +92,7 @@ class App extends Component {
         this.message2 = data.message;
         this.thirdRoute = data.thirdRoute;
         this.refs.secondAuth.className = 'hideElement';
-        this.progress=50;
+        this.progress=66.66666;
         this.setState({success2:true});        
       }
       else {
@@ -136,7 +136,7 @@ class App extends Component {
         this.message3 = data.message;
         this.fourthRoute = data.fourthRoute;
         this.refs.thirdAuth.className = 'hideElement';
-        this.progress=75;
+        this.progress=99.99999;
         this.setState({success3:true});        
       }
       else {
@@ -206,7 +206,8 @@ class App extends Component {
           
           <div ref="firstAuth" className = {(this.state.success1)? 'hideElement':'showElement auth-steps'}>             
             <p className = "auth-steps-explanation">Four passwords are required for this 4-step token verification. 
-              The first password will be checked by a Node.js API that will return a jsonwebtoken required for the second 
+              The first password will be checked by a Node.js API that will return a jwt token verifiable 
+              <a href="https://jwt.io/"> HERE</a> required for the second 
               step of the verification. This token will be issued by the first fiduciary entity at the bottom of the scale 
               of trust called Captain America and will be available for 2 minutes only.</p>
             <p>First password: <span>'secret'</span></p>

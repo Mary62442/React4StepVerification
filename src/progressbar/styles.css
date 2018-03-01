@@ -21,9 +21,30 @@
 
 .auth-progress {
     transition:width 0.5s linear, background-color 0.5s linear;
+    background-image: linear-gradient(
+    -45deg, 
+    rgba(255, 255, 255, .4) 25%, 
+    transparent 25%, 
+    transparent 50%, 
+    rgba(255, 255, 255, .4) 50%, 
+    rgba(255, 255, 255, .4) 75%, 
+    transparent 75%, 
+    transparent
+  );
+  background-size: 20px 20px;
     height:3px;    
     position:absolute;
     z-index:1;
+    animation: progressMove 2s linear infinite;
+}
+
+@keyframes progressMove {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 50px 50px;
+  }
 }
 .auth-progress:after {
     width:10px;
@@ -115,10 +136,10 @@
   }
 
   .auth-lock-container-opening {
-    animation:shaking 0.3s 0.5s ease-in backwards 3;
+    animation:shaking 0.3s 0.3s ease-in backwards 3;
   }
   .auth-lock-container-opening:before {
-    animation:authLight 0.3s 0.5s ease-in forwards;
+    animation:authLight 0.3s 0.3s ease-in forwards;
   }
   
   .auth-lock-container:before {
@@ -144,11 +165,11 @@
     inset 8px -3px 0px #FA8324, inset -3px 0 0px #FFA726, inset -9px 0 0px rgba(255,255,255,0.6)
   }
   .auth-lock-opening:before {
-    animation:unlockBefore 0.3s 0.5s linear forwards;
+    animation:unlockBefore 0.3s 0.3s linear forwards;
   }
 
   .auth-lock-opening:after {
-    animation:unlockAfter 0.3s 0.5s linear forwards;
+    animation:unlockAfter 0.3s 0.3s linear forwards;
   }
   
   
