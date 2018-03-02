@@ -1,12 +1,12 @@
 
 
-.auth-steps input[type="password"] {
+.auth-steps input[type="password"],  .auth-steps input[type="text"]{
 	padding:0.5em;
 	border-radius:3px;
 	border:1px solid rgb(189, 189, 189);
 	outline:none;
 }
-.auth-steps input[type="password"]:focus {
+.auth-steps input[type="password"]:focus,  .auth-steps input[type="text"]:focus {
 	padding:0.5em;
 	border-radius:3px;
 	border:1px solid rgb(189, 189, 189);

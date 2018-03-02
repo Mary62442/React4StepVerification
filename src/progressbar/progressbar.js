@@ -15,7 +15,7 @@ class ProgressBar extends Component {
         
         <div className="progress-bar-container">
             <div className="progress-container">
-                <div style={{width:`${this.props.progress}%`, backgroundColor:`hsl(${this.props.progress},100%,50%)`} } className="auth-progress">                    
+                <div style={{width:`${this.props.progress}%`, backgroundColor:`hsl(${this.props.progress},100%,50%)`} } className={this.progress===100?"auth-progress auth-progress-end":"auth-progress"}>                    
                 </div>
                 <p><i className = {this.props.progress >= 33.33333? 'i-checked':''}></i></p>
                 <p><i className = {this.props.progress >= 66.66666? 'i-checked':''}></i></p>

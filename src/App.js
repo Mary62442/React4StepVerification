@@ -7,6 +7,7 @@ class App extends Component {
 
   constructor(props) {
     super(props);   
+    this.username="";
     this.secondRoute="";
     this.thirdRoute="";
     this.fourthRoute="";
@@ -19,19 +20,17 @@ class App extends Component {
     this.state = {success1:false, success2:false, success3:false, success4:false}
   }
 
-
   firstAuthentication = () => {
-    let password1 = this.refs.password1.value;    
-   
+    let password1 = this.refs.password1.value;   
+    this.username = this.refs.username.value; 
+    let memorableA = this.refs.memorablea.value;
+
     fetch(`http://localhost:8080/firststepsecurity`, { 
-      method: "POST",      
+      method: "POST",  
+      body: JSON.stringify({username:this.username, memorableA:memorableA}),     
       headers: {
         'Content-type':'application/json',
-        'Custom-Auth-Step1' : password1,
-        // 'Custom-Auth-Step2' : 'Second password',
-        // 'Custom-Auth-Step3' : 'Third password',
-        // 'Custom-Auth-Step4' : 'Fourth password',
-        // 'Custom-Auth-Step5' : 'Fifth password', 
+        'Custom-Auth-Step1' : password1       
       }
     })
     .then(response => {
@@ -43,7 +42,8 @@ class App extends Component {
     .then(data => {
       console.log(data);
 
-      if(data.success) {        
+      if(data.success) {  
+        this.username = data.username;      
         this.refs.token1.value = data.token;
         this.message1 = data.message;
         this.secondRoute = data.secondRoute;
@@ -55,12 +55,9 @@ class App extends Component {
         this.message1 = data.message;
         this.setState({success1:false});
       }
-
-      //this.refs.resultpassword1.innerHTML = data;
     }); 
   }
   
-
 
   secondAuthentication = () => {
     let password2 = this.refs.password2.value;
@@ -68,14 +65,10 @@ class App extends Component {
    
     fetch(`http://localhost:8080/${this.secondRoute}`, { 
       method: "POST",   
-      body: JSON.stringify({token1:token1}),   
+      body: JSON.stringify({token1:token1, username:this.username}),   
       headers: {
         'Content-type':'application/json',
-        'Custom-Auth-Step2' : password2,
-        // 'Custom-Auth-Step2' : 'Second password',
-        // 'Custom-Auth-Step3' : 'Third password',
-        // 'Custom-Auth-Step4' : 'Fourth password',
-        // 'Custom-Auth-Step5' : 'Fifth password', 
+        'Custom-Auth-Step2' : password2        
       }
     })
     .then(response => {
@@ -87,7 +80,8 @@ class App extends Component {
     .then(data => {
       console.log(data);
 
-      if(data.success) {        
+      if(data.success) {  
+        this.username = data.username;      
         this.refs.token2.value = data.token;
         this.message2 = data.message;
         this.thirdRoute = data.thirdRoute;
@@ -112,14 +106,10 @@ class App extends Component {
    
     fetch(`http://localhost:8080/${this.thirdRoute}`, { 
       method: "POST",   
-      body: JSON.stringify({token2:token2}),   
+      body: JSON.stringify({token2:token2, username:this.username}),   
       headers: {
         'Content-type':'application/json',
-        'Custom-Auth-Step3' : password3,
-        // 'Custom-Auth-Step2' : 'Second password',
-        // 'Custom-Auth-Step3' : 'Third password',
-        // 'Custom-Auth-Step4' : 'Fourth password',
-        // 'Custom-Auth-Step5' : 'Fifth password', 
+        'Custom-Auth-Step3' : password3,        
       }
     })
     .then(response => {
@@ -131,7 +121,8 @@ class App extends Component {
     .then(data => {
       console.log(data);
 
-      if(data.success) {        
+      if(data.success) {  
+        this.username = data.username;      
         this.refs.token3.value = data.token;
         this.message3 = data.message;
         this.fourthRoute = data.fourthRoute;
@@ -156,14 +147,10 @@ class App extends Component {
    
     fetch(`http://localhost:8080/${this.fourthRoute}`, { 
       method: "POST",   
-      body: JSON.stringify({token3:token3}),   
+      body: JSON.stringify({token3:token3, username:this.username}),   
       headers: {
         'Content-type':'application/json',
-        'Custom-Auth-Step4' : password4,
-        // 'Custom-Auth-Step2' : 'Second password',
-        // 'Custom-Auth-Step3' : 'Third password',
-        // 'Custom-Auth-Step4' : 'Fourth password',
-        // 'Custom-Auth-Step5' : 'Fifth password', 
+        'Custom-Auth-Step4' : password4       
       }
     })
     .then(response => {
@@ -210,6 +197,11 @@ class App extends Component {
               <a href="https://jwt.io/"> HERE</a> required for the second 
               step of the verification. This token will be issued by the first fiduciary entity at the bottom of the scale 
               of trust called Captain America and will be available for 2 minutes only.</p>
+
+            <p>Username: <span>'DM88'</span></p>
+            <input ref="username" name="username" type="text"/> 
+            <p>Favourite season? <span>'autumn'</span></p>
+            <input ref="memorablea" name="memorablea" type="password"/>
             <p>First password: <span>'secret'</span></p>
             <div className = "auth-button-flex">
             <input ref="password1" name="password1" type="password"/>          

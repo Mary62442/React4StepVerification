@@ -38,6 +38,10 @@
     animation: progressMove 2s linear infinite;
 }
 
+.auth-progress-end {
+  animation-play-state: paused;
+}
+
 @keyframes progressMove {
   0% {
     background-position: 0 0;
