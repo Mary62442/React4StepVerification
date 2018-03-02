@@ -243,7 +243,7 @@ class App extends Component {
 
           <div ref="thirdAuth" className = {(this.state.success1 && this.state.success2)? 'showElement auth-steps' : 'hideElement'}> 
             <p className = "auth-steps-message-success">{this.message2}</p> 
-            
+            <div className ="auth-general-logo"></div>
             <p>Second token</p>
             <textarea ref="token2" name="token2" type="text"/>
             <p>Third password: <span>'concealed'</span></p>
