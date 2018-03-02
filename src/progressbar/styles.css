@@ -1,6 +1,7 @@
 .progress-bar-container {
     width:100%;
-    padding-top: 1em;
+    padding: 1em 1em 0 1em;
+    box-sizing:border-box;
     height:5em;
     background-color:white;
     display:flex;
@@ -101,6 +102,7 @@
     border-radius:50%;
     opacity:0;
     animation: checkedBefore 0.1s linear forwards;
+    box-shadow: inset 0px 3px rgb(123, 212, 97);
 }
 
 @keyframes checkedBefore {
@@ -256,5 +258,11 @@
     }
     100% {
       top:-10px;    
+    }
+  }
+
+  @media (max-width:600px) {
+    .auth-lock-container {
+      display:none;
     }
   }

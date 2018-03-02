@@ -31,8 +31,7 @@
 	border-radius:3px;
   background-color:#ff7403;	
   border:none;
-	color:white;
-	margin-left:1em;
+	color:white;	
 	transition:all 0.1s linear;
 	outline:none;
   cursor:pointer;
@@ -53,7 +52,7 @@
 
 .container-auth h1 {
   margin: 0;
-    padding: 0;
+    padding: 0 0.5em;
     font-size: 2.2em;
     text-transform: uppercase;
     text-align: center;
@@ -90,10 +89,16 @@
   position:relative;
   margin:0 auto;
 }
-.auth-steps-message {
+.auth-steps-message-success {
   letter-spacing: 0.1em;
-    text-align: center;
-    font-weight: bold;
+  text-align: center;
+  font-weight: bold;
+}
+
+.auth-steps-message-failure {
+  margin:0;  
+  color:red;
+  text-align: center;  
 }
 
 .auth-steps-explanation {
@@ -135,4 +140,34 @@
 
 .secretData {
   background:linear-gradient(to top left, #0756a0, rgb(41, 154, 189));
+}
+
+@media (max-width:1000px) {
+  .auth-button-flex {
+    flex-direction:column;
+    align-items:flex-start;
+  }
+  .auth-steps-message-failure {
+    padding:1em 0;
+  }
+}
+
+@media (max-width:600px) {
+  .container-auth {
+    width:100%;
+  }
+
+  .auth-steps {
+    width:80%;
+  }
+
+  .auth-main-container {
+    padding:0;
+  }
+
+  .container-auth h1 {
+    font-size: 1.7em;
+  }
+  
+
 }
