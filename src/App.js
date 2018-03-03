@@ -193,11 +193,11 @@ class App extends Component {
           
           <div ref="firstAuth" className = {(this.state.success1)? 'hideElement':'showElement auth-steps'}>             
            
-            <p>Username: <span>'DM88'</span></p>
+            <p>Username: <span>DM88</span></p>
             <input ref="username" name="username" type="text"/> 
-            <p>Favourite season? <span>'autumn'</span></p>
+            <p>Favourite season? <span>autumn</span></p>
             <input ref="memorablea" name="memorablea" type="password"/>
-            <p>First password: <span>'secret'</span></p>
+            <p>First password: <span>secret</span></p>
             <div className = "auth-button-flex">
               <input ref="password1" name="password1" type="password"/>     
               <p className = "auth-steps-message-failure">{this.message1}</p>         
@@ -213,11 +213,14 @@ class App extends Component {
           </div>  
           
           <div ref="secondAuth" className = {(this.state.success1)? 'showElement auth-steps' : 'hideElement'}>
-            <p className = "auth-steps-message-success">{this.message1}</p> 
+            <div className = "auth-message-logo-flex">
+              <p className = "auth-steps-message-success">{this.message1}</p> 
+              <div className ="auth-captain-logo auth-entity-logo"></div>
+            </div>
             
             <p>First token</p>
             <textarea ref="token1" name="token1" type="text"/>
-            <p>Second password: <span>'hidden'</span></p>
+            <p>Second password: <span>hidden</span></p>
             <div className = "auth-button-flex">
               <input ref="password2" name="password2" type="password"/>
               <p className = "auth-steps-message-failure">{this.message2}</p>
@@ -242,11 +245,13 @@ class App extends Component {
           </div>
 
           <div ref="thirdAuth" className = {(this.state.success1 && this.state.success2)? 'showElement auth-steps' : 'hideElement'}> 
+          <div className = "auth-message-logo-flex">
             <p className = "auth-steps-message-success">{this.message2}</p> 
-            <div className ="auth-general-logo"></div>
+            <div className ="auth-general-logo auth-entity-logo"></div>
+            </div>
             <p>Second token</p>
             <textarea ref="token2" name="token2" type="text"/>
-            <p>Third password: <span>'concealed'</span></p>
+            <p>Third password: <span>concealed</span></p>
             <div className = "auth-button-flex">
               <input ref="password3" name="password3" type="password"/>
               <p className = "auth-steps-message-failure">{this.message3}</p>
@@ -274,7 +279,7 @@ class App extends Component {
             
             <p>Third token</p>           
             <textarea ref="token3" name="token3" type="text"/>
-            <p>Fourth password: <span>'inaccessible'</span></p>
+            <p>Fourth password: <span>inaccessible</span></p>
             <div className = "auth-button-flex">
               <input ref="password4" name="password4" type="password"/>
               <p className = "auth-steps-message-failure">{this.message4}</p> 

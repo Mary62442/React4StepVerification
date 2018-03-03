@@ -23,6 +23,13 @@
 
 .auth-main-container {
   padding:3em 0;
+  box-sizing:border-box;
+  background: linear-gradient(to top left,#3E5381, rgb(100, 120, 163));
+  min-height:100vh;
+}
+
+.auth-steps pre {
+  overflow-x:scroll;
 }
 
 .auth-steps button {
@@ -83,16 +90,29 @@
   resize: none;
 }
 
-.auth-general-logo {
-  background-image:url('./images/general-shang.png');
-  width:200px;
-  height:200px;
+.auth-message-logo-flex {
+  display:flex;
+  align-items:center;
+  justify-content:space-around;
+}
+
+.auth-captain-logo {
+  background-image:url('./images/captain-america.png');
+}
+.auth-entity-logo {
+  width:250px;
+  height:250px;
   background-size:cover;
   background-repeat:no-repeat;
   margin:0 auto;
   opacity:0;
   transition:all 0.2s linear;
   animation:logoAppear 0.5s 0.2s linear forwards;
+}
+
+.auth-general-logo {
+  background-image:url('./images/general-shang.png');
+  
 }
 
 @keyframes logoAppear {
@@ -105,8 +125,8 @@
 
 }
 
-.auth-general-logo:hover {
-  transform:scale(1.2);
+.auth-entity-logo:hover {
+  transform:scale(1.1);
 }
 
 
@@ -122,6 +142,7 @@
   letter-spacing: 0.1em;
   text-align: center;
   font-weight: bold;
+  width:45%;
 }
 
 .auth-steps-message-failure {
@@ -143,6 +164,12 @@
   }
   .auth-steps-message-failure {
     padding:1em 0;
+  }
+  .auth-steps-message-success {
+    width:100%;
+  }
+  .auth-message-logo-flex {
+    flex-direction:column;
   }
 }
 
