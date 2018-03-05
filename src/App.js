@@ -193,10 +193,15 @@ class App extends Component {
           
           <div ref="firstAuth" className = {(this.state.success1)? 'hideElement':'showElement auth-steps'}>             
            
-            <p>Username: <span>DM88</span></p>
-            <input ref="username" name="username" type="text"/> 
-            <p>Favourite season? <span>autumn</span></p>
-            <input ref="memorablea" name="memorablea" type="password"/>
+            <div className = "auth-logo-flex">
+              <div>
+                <p>Username: <span>DM88</span></p>
+                <input ref="username" name="username" type="text"/> 
+                <p>Favourite season? <span>autumn</span></p>
+                <input ref="memorablea" name="memorablea" type="password"/>
+              </div>
+              <div className = "auth-logo-case-study"></div>
+            </div>
             <p>First password: <span>secret</span></p>
             <div className = "auth-button-flex">
               <input ref="password1" name="password1" type="password"/>     
@@ -275,8 +280,14 @@ class App extends Component {
           </div>
             
           <div ref="fourthAuth" className = {(this.state.success1 && this.state.success2 && this.state.success3)? 'showElement auth-steps' : 'hideElement'}>
-            <p className = "auth-steps-message-success">{this.message3}</p> 
             
+            
+            <div className = "auth-message-logo-flex">
+            <p className = "auth-steps-message-success">{this.message3}</p> 
+            <div className ="auth-president-logo auth-entity-logo"></div>
+            </div>
+
+
             <p>Third token</p>           
             <textarea ref="token3" name="token3" type="text"/>
             <p>Fourth password: <span>inaccessible</span></p>
