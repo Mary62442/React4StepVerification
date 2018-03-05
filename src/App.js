@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import ProgressBar from './progressbar/progressbar';
 
@@ -25,7 +24,7 @@ class App extends Component {
     this.username = this.refs.username.value; 
     let memorableA = this.refs.memorablea.value;
 
-    fetch(`http://localhost:8080/firststepsecurity`, { 
+    fetch(`https://apimicrobach.azurewebsites.net/firststepsecurity`, { 
       method: "POST",  
       body: JSON.stringify({username:this.username, memorableA:memorableA}),     
       headers: {
@@ -34,13 +33,12 @@ class App extends Component {
       }
     })
     .then(response => {
-      if (response.status >= 400) {        
-        console.log(response.status);      
+      if (response.status >= 400) { 
+        console.log(response.status); 
       }    
       return response.json();
     })
-    .then(data => {
-      console.log(data);
+    .then(data => {     
 
       if(data.success) {  
         this.username = data.username;      
@@ -63,7 +61,7 @@ class App extends Component {
     let password2 = this.refs.password2.value;
     let token1 = this.refs.token1.value;    
    
-    fetch(`http://localhost:8080/${this.secondRoute}`, { 
+    fetch(`https://apimicrobach.azurewebsites.net/${this.secondRoute}`, { 
       method: "POST",   
       body: JSON.stringify({token1:token1, username:this.username}),   
       headers: {
@@ -77,8 +75,7 @@ class App extends Component {
       }    
       return response.json();
     })
-    .then(data => {
-      console.log(data);
+    .then(data => {     
 
       if(data.success) {  
         this.username = data.username;      
@@ -104,7 +101,7 @@ class App extends Component {
     let password3 = this.refs.password3.value;
     let token2 = this.refs.token2.value;    
    
-    fetch(`http://localhost:8080/${this.thirdRoute}`, { 
+    fetch(`https://apimicrobach.azurewebsites.net/${this.thirdRoute}`, { 
       method: "POST",   
       body: JSON.stringify({token2:token2, username:this.username}),   
       headers: {
@@ -119,7 +116,6 @@ class App extends Component {
       return response.json();
     })
     .then(data => {
-      console.log(data);
 
       if(data.success) {  
         this.username = data.username;      
@@ -145,7 +141,7 @@ class App extends Component {
     let password4 = this.refs.password4.value;
     let token3 = this.refs.token3.value;    
    
-    fetch(`http://localhost:8080/${this.fourthRoute}`, { 
+    fetch(`https://apimicrobach.azurewebsites.net/${this.fourthRoute}`, { 
       method: "POST",   
       body: JSON.stringify({token3:token3, username:this.username}),   
       headers: {
@@ -154,14 +150,12 @@ class App extends Component {
       }
     })
     .then(response => {
-      if (response.status >= 400) {        
-        console.log(response.status);      
+      if (response.status >= 400) { 
+        console.log(response.status);              
       }    
       return response.json();
     })
-    .then(data => {
-      console.log(data);
-
+    .then(data => {  
       if(data.success) {       
         this.superSecretData = data.superSecretData;
         this.message4 = data.message;
@@ -178,13 +172,8 @@ class App extends Component {
       //this.refs.resultpassword1.innerHTML = data;
     }); 
   }
-
-  componentDidMount() {
-    console.log(this.refs.firstAuth.className);
-  }
-
-  render() {
-    console.log(this.progress)
+ 
+  render() {    
     return (
       <div className = "auth-main-container">
       <div className="container-auth" >   
@@ -208,11 +197,14 @@ class App extends Component {
               <p className = "auth-steps-message-failure">{this.message1}</p>         
               <button onClick={this.firstAuthentication}>Verify</button> 
             </div>
-            <p className = "auth-steps-explanation">Four passwords are required for this 4-step token verification. 
-              The first password will be checked by a Node.js API that will return a jwt token verifiable 
-              <a href="https://jwt.io/"> HERE</a> required for the second 
+            <p className = "auth-steps-explanation">
+              This 4-step-token verification requires the user to have a valid username, a memorable question,
+              and four passwords. Username, answer to the memorable question and first password 
+              will be checked by a Node.js API that will return a jwt token verifiable &nbsp;
+              <a href="https://jwt.io/">HERE</a> required for the second 
               step of the verification. This token will be issued by the first fiduciary entity at the bottom of the scale 
-              of trust called Captain America and will be available for 2 minutes only.</p>
+              of trust called Captain America and will be available for 2 minutes only. The valid username will also be sent back
+              and will be checked in the second step of the verification as well.</p>
 
                     
           </div>  
@@ -274,7 +266,7 @@ class App extends Component {
             </code></pre>
             <p className = "auth-steps-explanation">By sending the second token and the third password 
               to a third Node.js API which will verify the validity of the General's token, a third entity, the 
-              Commander in chief President of the USA, will emit a third token for the fourth and final verification.
+              President of the United States of America, will emit a third token for the fourth and final verification.
             </p>
              
           </div>
@@ -307,8 +299,8 @@ class App extends Component {
 }`}
             </code></pre>
             <p className = "auth-steps-explanation">The token was verified by General Shang and the third password was correct. 
-            Commander in chief President of the USA has issued a third and final token for the fourth verification. 
-            By submitting the credentials, the Commander in chief will check the third token and if it is valid and 
+            The President of the USA has issued a third and final token for the fourth verification. 
+            By submitting the credentials, the President will check the third token and if it is valid and 
             the password coincides, access to the secret data will be granted.
             </p>             
                       

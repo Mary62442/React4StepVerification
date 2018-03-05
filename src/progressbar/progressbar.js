@@ -3,14 +3,7 @@ import './styles.css';
 
 class ProgressBar extends Component {
 
-  constructor(props) {
-    super(props);   
-    
-    
-  }
-
-  render() {
-      console.log(this.props.progress);
+  render() {      
     return (   
         
         <div className="progress-bar-container">
