@@ -216,7 +216,46 @@ class App extends Component {
     }
   }
  
-  render() {    
+  render() {   
+
+    let Credentials = () => {
+    if (typeof this.props.credentials.Step3 !== 'undefined') {
+
+      return(
+        <div className = "redux-credentials-container">
+          <h2>Credentials stored in Redux store</h2>
+          <h3>Step 1</h3>
+          <p>Name: {this.props.credentials.Step1.name}</p>
+          <p>Organization: {this.props.credentials.Step1.organization}</p>
+          <p>Email: {this.props.credentials.Step1.contactEmail}</p>
+          <p>Website: {this.props.credentials.Step1.website}</p>
+          <p>Token:</p>
+          <textarea readOnly value = {this.props.credentials.Step1.token} cols="10" rows="20" ></textarea>
+
+          <h3>Step 2</h3>
+          <p>Name: {this.props.credentials.Step2.name}</p>
+          <p>Organization: {this.props.credentials.Step2.organization}</p>
+          <p>Email: {this.props.credentials.Step2.contactEmail}</p>
+          <p>Website: {this.props.credentials.Step2.website}</p>
+          <p>Token:</p>
+          <textarea readOnly value = {this.props.credentials.Step2.token} cols="10" rows="20" ></textarea>
+
+          <h3>Step 3</h3>
+          <p>Name: {this.props.credentials.Step3.name}</p>
+          <p>Organization: {this.props.credentials.Step3.organization}</p>
+          <p>Email: {this.props.credentials.Step3.contactEmail}</p>
+          <p>Website: {this.props.credentials.Step3.website}</p>
+          <p>Token:</p>
+          <textarea readOnly value = {this.props.credentials.Step3.token} cols="10" rows="20" ></textarea>
+        </div>
+      )
+    }
+    else return null;
+
+  }
+    
+
+
     return (
       <div className = "auth-main-container">
       <div className="container-auth" >   
@@ -355,8 +394,11 @@ class App extends Component {
             <p className = "auth-steps-explanation">The fourth password and the third token have been verified by the Commander in chief and were valid.
               The verification is now complete.
             </p>
-            <p>{this.superSecretData}</p>
-            
+            {/* <p>{this.superSecretData}</p> */}
+
+            <Credentials />
+
+           
           </div> 
             
           </div>

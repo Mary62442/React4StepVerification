@@ -176,6 +176,30 @@
 }
 
 
+.redux-credentials-container h3:first-of-type {
+  color:red;
+}
+.redux-credentials-container h3:nth-of-type(2) {
+  color:orange;
+}
+.redux-credentials-container h3:nth-of-type(3) {
+  color:green;
+}
+.redux-credentials-container h2 {
+  text-align:center;
+}
+.redux-credentials-container p {
+  margin:0;
+  font-size:0.9em;
+}
+.redux-credentials-container h3 {
+  margin:0.5em 0;
+}
+.redux-credentials-container textarea {
+  margin:1em 0;
+}
+
+
 @media (max-width:1000px) {
   .auth-button-flex {
     flex-direction:column;
