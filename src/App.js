@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
 import ProgressBar from './progressbar/progressbar';
+import {connect} from 'react-redux';
+import {addCredentialCaptain, addCredentialGeneral, addCredentialPresident} from './state/actions';
 
 class App extends Component {
 
@@ -46,7 +48,18 @@ class App extends Component {
         this.message1 = data.message;
         this.secondRoute = data.secondRoute;
         this.progress=33.33333;
-        this.setState({success1:true});        
+        this.setState({success1:true}); 
+        
+        let credential1 = { 
+            name:'Captain America', 
+            organization:'Avengers', 
+            website:'avengers.com', 
+            contactEmail:'captainamerica@gmail.com', 
+            role:	['Captain'],
+            token:data.token
+        }   
+        
+        this.props.dispatch(addCredentialCaptain("Step1", credential1));
       }
       else {
         this.refs.token1.value = "";
@@ -54,7 +67,7 @@ class App extends Component {
         this.setState({success1:false});
       }
     }); 
-  }
+  };
   
 
   secondAuthentication = () => {
@@ -84,7 +97,19 @@ class App extends Component {
         this.thirdRoute = data.thirdRoute;
         this.refs.secondAuth.className = 'hideElement';
         this.progress=66.66666;
-        this.setState({success2:true});        
+        this.setState({success2:true});   
+        
+        
+        let credential2 = { 
+          name:'General Shang', 
+          organization:'Mulan', 
+          website:'disney.com',
+          contactEmail:'generalshang@gmail.com',
+          role:['Captain','General'],
+          token:data.token
+      }   
+      
+      this.props.dispatch(addCredentialGeneral("Step2", credential2));
       }
       else {
         this.refs.token2.value = "";
@@ -94,7 +119,7 @@ class App extends Component {
 
       //this.refs.resultpassword1.innerHTML = data;
     }); 
-  }
+  };
 
 
   thirdAuthentication = () => {
@@ -124,7 +149,19 @@ class App extends Component {
         this.fourthRoute = data.fourthRoute;
         this.refs.thirdAuth.className = 'hideElement';
         this.progress=99.99999;
-        this.setState({success3:true});        
+        this.setState({success3:true});  
+        
+        
+        let credential3 = { 
+          name:'The President of the United States', 
+          organization:'USA', 
+          website:'usa.com',
+          contactEmail:'abrahamlincoln@gmail.com',
+          role:['Captain','General','Commander in Chief'],
+          token:data.token
+      }   
+      
+      this.props.dispatch(addCredentialPresident("Step3", credential3));
       }
       else {
         this.refs.token3.value = "";
@@ -134,7 +171,7 @@ class App extends Component {
 
       //this.refs.resultpassword1.innerHTML = data;
     }); 
-  }
+  };
 
 
   fourthAuthentication = () => {
@@ -171,6 +208,12 @@ class App extends Component {
 
       //this.refs.resultpassword1.innerHTML = data;
     }); 
+  };
+
+  componentWillUpdate(nextProps) {
+    if(nextProps.credentials !== this.props.credentials) {
+      console.log(nextProps.credentials);
+    }
   }
  
   render() {    
@@ -313,6 +356,7 @@ class App extends Component {
               The verification is now complete.
             </p>
             <p>{this.superSecretData}</p>
+            
           </div> 
             
           </div>
@@ -321,4 +365,8 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return {credentials:state.credentials};  
+}
+
+export default connect(mapStateToProps)(App);
