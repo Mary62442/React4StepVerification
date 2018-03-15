@@ -10,6 +10,10 @@ export const addCredentialPresident = (stepName, credentials) => {
 	return {type: "ADD-CREDENTIAL-PRESIDENT", stepName:stepName, entityCredentials: credentials}
 };
 
+export const addCredential = (stepName, credentials) => {
+	return {type:"ADD-CREDENTIAL", stepName: stepName, entityCredentials:credentials};
+}
+
 
 export const increment = (amount) => {
 	return {type: "INCREMENT", amount:amount}

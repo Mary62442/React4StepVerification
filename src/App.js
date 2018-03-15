@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import ProgressBar from './progressbar/progressbar';
 import {connect} from 'react-redux';
-import {addCredentialCaptain, addCredentialGeneral, addCredentialPresident, increment, decrement, light, dark} from './state/actions';
+import {addCredential} from './state/actions';
 import classNames from 'classnames';
 
 class App extends Component {
@@ -60,7 +60,7 @@ class App extends Component {
             token:data.token
         }   
         
-        this.props.dispatch(addCredentialCaptain("Step1", credential1));
+        this.props.dispatch(addCredential("Step1", credential1));
       }
       else {
         this.refs.token1.value = "";
@@ -110,7 +110,7 @@ class App extends Component {
           token:data.token
       }   
       
-      this.props.dispatch(addCredentialGeneral("Step2", credential2));
+      this.props.dispatch(addCredential("Step2", credential2));
       }
       else {
         this.refs.token2.value = "";
@@ -162,7 +162,7 @@ class App extends Component {
           token:data.token
       }   
       
-      this.props.dispatch(addCredentialPresident("Step3", credential3));
+      this.props.dispatch(addCredential("Step3", credential3));
       }
       else {
         this.refs.token3.value = "";
@@ -215,12 +215,8 @@ class App extends Component {
     if(nextProps.credentials !== this.props.credentials) {
       console.log(nextProps.credentials);
     }
-
-    if(nextProps.state !== this.props.state) {
-      console.log(nextProps.state);
-    }
   }
-
+/* 
   inc = () => {
     this.props.dispatch(increment(1));
   }
@@ -233,7 +229,7 @@ class App extends Component {
   dark = () => {
     this.props.dispatch(dark());
   }
- 
+  */
  
   render() {  
     
@@ -246,46 +242,44 @@ class App extends Component {
     let mainContainerClasses = classNames({
       "container-auth":true,
       "container-auth-dark": this.props.theme === "dark",
-      "container-auth-light": this.props.theme === "light"      
+      "container-auth-light": true      
     })
 
     let Credentials = () => {
-    if (typeof this.props.credentials.Step3 !== 'undefined') {
+    if (typeof this.props.credentials.Claims.Step3 !== 'undefined') {
 
       return(
         <div className = {credentialClasses}>
           <h2>Credentials stored in Redux store</h2>
           <h3>Step 1</h3>
-          <p>Name: {this.props.credentials.Step1.name}</p>
-          <p>Organization: {this.props.credentials.Step1.organization}</p>
-          <p>Email: {this.props.credentials.Step1.contactEmail}</p>
-          <p>Website: {this.props.credentials.Step1.website}</p>
+          <p>Name: {this.props.credentials.Claims.Step1.name}</p>
+          <p>Organization: {this.props.credentials.Claims.Step1.organization}</p>
+          <p>Email: {this.props.credentials.Claims.Step1.contactEmail}</p>
+          <p>Website: {this.props.credentials.Claims.Step1.website}</p>
           <p>Token:</p>
-          <textarea readOnly value = {this.props.credentials.Step1.token} cols="10" rows="20" ></textarea>
+          <textarea readOnly value = {this.props.credentials.Claims.Step1.token} cols="10" rows="20" ></textarea>
 
           <h3>Step 2</h3>
-          <p>Name: {this.props.credentials.Step2.name}</p>
-          <p>Organization: {this.props.credentials.Step2.organization}</p>
-          <p>Email: {this.props.credentials.Step2.contactEmail}</p>
-          <p>Website: {this.props.credentials.Step2.website}</p>
+          <p>Name: {this.props.credentials.Claims.Step2.name}</p>
+          <p>Organization: {this.props.credentials.Claims.Step2.organization}</p>
+          <p>Email: {this.props.credentials.Claims.Step2.contactEmail}</p>
+          <p>Website: {this.props.credentials.Claims.Step2.website}</p>
           <p>Token:</p>
-          <textarea readOnly value = {this.props.credentials.Step2.token} cols="10" rows="20" ></textarea>
+          <textarea readOnly value = {this.props.credentials.Claims.Step2.token} cols="10" rows="20" ></textarea>
 
           <h3>Step 3</h3>
-          <p>Name: {this.props.credentials.Step3.name}</p>
-          <p>Organization: {this.props.credentials.Step3.organization}</p>
-          <p>Email: {this.props.credentials.Step3.contactEmail}</p>
-          <p>Website: {this.props.credentials.Step3.website}</p>
+          <p>Name: {this.props.credentials.Claims.Step3.name}</p>
+          <p>Organization: {this.props.credentials.Claims.Step3.organization}</p>
+          <p>Email: {this.props.credentials.Claims.Step3.contactEmail}</p>
+          <p>Website: {this.props.credentials.Claims.Step3.website}</p>
           <p>Token:</p>
-          <textarea readOnly value = {this.props.credentials.Step3.token} cols="10" rows="20" ></textarea>
+          <textarea readOnly value = {this.props.credentials.Claims.Step3.token} cols="10" rows="20" ></textarea>
         </div>
       )
     }
     else return null;
 
   }
-    
-
 
     return (
       <div className = "auth-main-container">
@@ -445,7 +439,7 @@ class App extends Component {
 }
 
 const mapStateToProps = (state) => {
-  return {credentials:state.credentials, state:state, counter:state.counter, theme:state.theme};  
+  return {credentials:state.credentials};  
 }
 
 export default connect(mapStateToProps)(App);

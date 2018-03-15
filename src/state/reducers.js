@@ -1,10 +1,8 @@
 import {combineReducers} from "redux";
 
 
-const credentials = (state = {}, action) => {	
-	let newState = {};
-	
-
+/* const credentials = (state = {}, action) => {	
+	let newState = {};	
 	switch (action.type) {				
 		case "ADD-CREDENTIAL-CAPTAIN" :
 		newState = {...state};	
@@ -25,6 +23,18 @@ const credentials = (state = {}, action) => {
 		return state;
 	}
 };
+ */
+
+const credentials = (state ={}, action) => {
+	const newState = {Claims:state.Claims};
+	switch (action.type) {
+		case "ADD-CREDENTIAL" : 
+		Object.defineProperty(newState.Claims, action.stepName, {value:action.entityCredentials});
+		return newState;
+		default :
+		return state;
+	}
+}
 
 const counter = (state = 0, action) => {
 	switch (action.type) {

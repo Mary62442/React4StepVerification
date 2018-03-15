@@ -188,6 +188,9 @@
   padding: 2em;
   box-sizing: border-box;
   border-radius: 3px;
+  background-color: #f2f6ff;
+  color:#101010;
+  border: 1px solid #dcdcdc;
 }
 .cred-light {
   background-color: #f2f6ff;

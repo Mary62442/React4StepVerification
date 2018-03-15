@@ -7,7 +7,7 @@ import thunk from "redux-thunk";
 export default createStore(
 	reducers,
 	{
-		credentials : {},
+		credentials : {Claims:{}},
 		counter: 0,
 		theme:"light"
 	},
