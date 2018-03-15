@@ -86,15 +86,24 @@
   background-color:#b85300;
 }
 
-.container-auth {
+.container-auth-light {
   background-color:#fff;
   color:#101010;
   width:80%;
   margin:0 auto;
   position:relative;
   padding-top:1em;
-  box-shadow:0 0 10px rgba(0,0,0,0.8);
-  
+  box-shadow:0 0 10px rgba(0,0,0,0.8);  
+}
+
+.container-auth-dark {
+  background-color:black;
+  color:white;
+  width:80%;
+  margin:0 auto;
+  position:relative;
+  padding-top:1em;
+  box-shadow:0 0 10px rgba(0,0,0,0.8);  
 }
 .container-auth textarea {
   width:100%;
@@ -175,6 +184,21 @@
   color:#5e5e5e;
 }
 
+.redux-credentials-container {
+  padding: 2em;
+  box-sizing: border-box;
+  border-radius: 3px;
+}
+.cred-light {
+  background-color: #f2f6ff;
+  color:#101010;
+  border: 1px solid #dcdcdc;
+}
+.cred-dark {
+  background-color: rgb(39, 39, 39);
+  color:white;
+  border:none;
+}
 
 .redux-credentials-container h3:first-of-type {
   color:red;
@@ -187,6 +211,7 @@
 }
 .redux-credentials-container h2 {
   text-align:center;
+  margin-top:0;
 }
 .redux-credentials-container p {
   margin:0;

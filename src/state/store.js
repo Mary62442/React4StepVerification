@@ -7,6 +7,8 @@ import thunk from "redux-thunk";
 export default createStore(
 	reducers,
 	{
-		credentials : {}
+		credentials : {},
+		counter: 0,
+		theme:"light"
 	},
 	compose(applyMiddleware(thunk)));

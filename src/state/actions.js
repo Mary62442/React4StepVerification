@@ -11,6 +11,26 @@ export const addCredentialPresident = (stepName, credentials) => {
 };
 
 
+export const increment = (amount) => {
+	return {type: "INCREMENT", amount:amount}
+}
+
+export const decrement = (amount) => {
+	return {type: "DECREMENT", amount:amount}
+}
+
+
+export const light = () => {
+	return {type: "LIGHT"}
+}
+
+export const dark = () => {
+	return {type: "DARK"}
+}
+
+
+
+
 /* export const increment = (delta) => ({  
 	type: "INCREMENT",
 	howMuch:delta 

@@ -26,6 +26,28 @@ const credentials = (state = {}, action) => {
 	}
 };
 
+const counter = (state = 0, action) => {
+	switch (action.type) {
+		case "INCREMENT" : 
+			return state + action.amount;
+		case "DECREMENT" :
+			return state - action.amount;
+		default:
+			return state;
+	}
+};
+
+const theme = (state = "", action) => {
+	switch (action.type) {
+		case "LIGHT" : 
+			return "light";
+		case "DARK" :
+			return "dark";
+		default:
+			return state;
+	}
+}
+
 
 
 /* const counter = (state = 0, action) => {  
@@ -67,7 +89,9 @@ const pageVisited = (state = {}, action) => {
 }; */
 
 const reducers = combineReducers({
-	credentials : credentials
+	credentials : credentials,
+	counter:counter,
+	theme:theme
 });
 
 export default reducers

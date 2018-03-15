@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import './App.css';
 import ProgressBar from './progressbar/progressbar';
 import {connect} from 'react-redux';
-import {addCredentialCaptain, addCredentialGeneral, addCredentialPresident} from './state/actions';
+import {addCredentialCaptain, addCredentialGeneral, addCredentialPresident, increment, decrement, light, dark} from './state/actions';
+import classNames from 'classnames';
 
 class App extends Component {
 
@@ -214,15 +215,45 @@ class App extends Component {
     if(nextProps.credentials !== this.props.credentials) {
       console.log(nextProps.credentials);
     }
+
+    if(nextProps.state !== this.props.state) {
+      console.log(nextProps.state);
+    }
+  }
+
+  inc = () => {
+    this.props.dispatch(increment(1));
+  }
+  dec = () => {
+    this.props.dispatch(decrement(1));
+  }
+  light = () => {
+    this.props.dispatch(light());
+  }
+  dark = () => {
+    this.props.dispatch(dark());
   }
  
-  render() {   
+ 
+  render() {  
+    
+    let credentialClasses = classNames({
+      "redux-credentials-container" :true,
+      "cred-dark" : this.props.theme === "dark",
+      "cred-light" : this.props.theme === "light"
+    });
+
+    let mainContainerClasses = classNames({
+      "container-auth":true,
+      "container-auth-dark": this.props.theme === "dark",
+      "container-auth-light": this.props.theme === "light"      
+    })
 
     let Credentials = () => {
     if (typeof this.props.credentials.Step3 !== 'undefined') {
 
       return(
-        <div className = "redux-credentials-container">
+        <div className = {credentialClasses}>
           <h2>Credentials stored in Redux store</h2>
           <h3>Step 1</h3>
           <p>Name: {this.props.credentials.Step1.name}</p>
@@ -258,10 +289,16 @@ class App extends Component {
 
     return (
       <div className = "auth-main-container">
-      <div className="container-auth" >   
+      {/* <button onClick = {this.inc}>Increment</button>
+          <button onClick = {this.dec}>Decrement</button>
+          <br/>
+          <button onClick = {this.light}>Light</button>
+          <button onClick = {this.dark}>Dark</button>      */}
+      <div className= {mainContainerClasses} >   
       <h1>4-Step Token Verification</h1>   
           <ProgressBar progress={this.progress}/>  
-          
+
+               
           <div ref="firstAuth" className = {(this.state.success1)? 'hideElement':'showElement auth-steps'}>             
            
             <div className = "auth-logo-flex">
@@ -408,7 +445,7 @@ class App extends Component {
 }
 
 const mapStateToProps = (state) => {
-  return {credentials:state.credentials};  
+  return {credentials:state.credentials, state:state, counter:state.counter, theme:state.theme};  
 }
 
 export default connect(mapStateToProps)(App);

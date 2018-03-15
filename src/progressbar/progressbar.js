@@ -1,12 +1,20 @@
 import React, { Component } from 'react';
 import './styles.css';
+import {connect} from 'react-redux';
+import classNames from 'classnames';
+
 
 class ProgressBar extends Component {
 
   render() {      
+
+    let progressClasses = classNames({
+        "progress-bar-container-dark":this.props.theme === "dark",
+        "progress-bar-container-light":this.props.theme === "light"
+    })
     return (   
         
-        <div className="progress-bar-container">
+        <div className={progressClasses}>
             <div className="progress-container">
                 <div style={{width:`${this.props.progress}%`, backgroundColor:`hsl(${this.props.progress},100%,50%)`} } className={this.progress===100?"auth-progress auth-progress-end":"auth-progress"}>                    
                 </div>
@@ -27,4 +35,10 @@ class ProgressBar extends Component {
   }
 }
 
-export default ProgressBar;
+
+const mapStateToProps = (state) => {
+    return {theme:state.theme};  
+  }
+  
+export default connect(mapStateToProps)(ProgressBar);
+

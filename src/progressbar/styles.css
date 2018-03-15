@@ -1,4 +1,4 @@
-.progress-bar-container {
+.progress-bar-container-light {
     width:100%;
     padding: 1em 1em 0 1em;
     box-sizing:border-box;
@@ -8,6 +8,18 @@
     align-items:center;
     justify-content: space-around;
     margin:0 auto;
+}
+
+.progress-bar-container-dark {
+  width:100%;
+  padding: 1em 1em 0 1em;
+  box-sizing:border-box;
+  height:5em;
+  background-color:black;
+  display:flex;
+  align-items:center;
+  justify-content: space-around;
+  margin:0 auto;
 }
 
 .progress-container {
